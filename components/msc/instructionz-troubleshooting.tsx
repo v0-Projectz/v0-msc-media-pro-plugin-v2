@@ -122,7 +122,7 @@ export function InstructionzTroubleshooting() {
           <ol className="mt-3 flex flex-col gap-2">
             {apiKeyGuide.steps.slice(1).map((step, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-card-foreground leading-relaxed">
-                <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-muted text-[9px] font-mono text-muted-foreground">
+                <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-muted text-[9px] font-sans text-muted-foreground">
                   {i + 2}
                 </span>
                 {step}

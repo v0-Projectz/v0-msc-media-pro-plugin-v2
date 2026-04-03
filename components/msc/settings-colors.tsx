@@ -105,7 +105,7 @@ export function SettingsColors() {
                 type="text"
                 value={color.value}
                 onChange={(e) => handleChange(color.id, e.target.value)}
-                className="flex-1 rounded-md border border-border bg-secondary px-3 py-2 text-xs text-foreground font-mono uppercase placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                className="flex-1 rounded-md border border-border bg-secondary px-3 py-2 text-xs text-foreground font-sans uppercase placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
               />
               {color.value !== color.defaultValue && (
                 <button
@@ -139,7 +139,7 @@ export function SettingsColors() {
                 className="h-3 w-3 rounded-full"
                 style={{ backgroundColor: colors.find((c) => c.id === "primary")?.value }}
               />
-              <span className="text-xs font-mono text-foreground">SYSTEM ACTIVE</span>
+              <span className="text-xs font-sans text-foreground">SYSTEM ACTIVE</span>
             </div>
             <p className="mt-2 text-[11px] text-muted-foreground">Card content preview</p>
           </div>
@@ -152,7 +152,7 @@ export function SettingsColors() {
                 className="h-3 w-3 rounded-full"
                 style={{ backgroundColor: colors.find((c) => c.id === "accent")?.value }}
               />
-              <span className="text-xs font-mono text-foreground">ALERT LABEL</span>
+              <span className="text-xs font-sans text-foreground">ALERT LABEL</span>
             </div>
             <p className="mt-2 text-[11px] text-muted-foreground">Accent color preview</p>
           </div>
@@ -175,7 +175,7 @@ export function SettingsColors() {
           Reset Defaults
         </button>
         {saved && (
-          <span className="text-xs font-mono text-primary animate-in fade-in">
+          <span className="text-xs font-sans text-primary animate-in fade-in">
             Color palette updated.
           </span>
         )}

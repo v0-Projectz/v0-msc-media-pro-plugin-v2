@@ -47,7 +47,7 @@ export function VideosSidebar({
                 )}
               >
                 <span>{cat.label}</span>
-                <span className="text-[10px] font-mono">{count}</span>
+                <span className="text-[10px] font-sans">{count}</span>
               </button>
             )
           })}

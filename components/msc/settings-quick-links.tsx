@@ -80,7 +80,7 @@ export function SettingsQuickLinks() {
               <GripVertical className="mt-2.5 h-4 w-4 shrink-0 cursor-grab text-muted-foreground" />
               <div className="min-w-0 flex-1">
                 <div className="mb-3 flex items-center gap-2">
-                  <span className="flex h-5 w-5 items-center justify-center rounded bg-secondary text-[10px] font-mono text-muted-foreground">
+                  <span className="flex h-5 w-5 items-center justify-center rounded bg-secondary text-[10px] font-sans text-muted-foreground">
                     {index + 1}
                   </span>
                   <span className="text-xs font-bold text-card-foreground uppercase tracking-wider">
@@ -99,7 +99,7 @@ export function SettingsQuickLinks() {
                       value={link.label}
                       placeholder="Link text"
                       onChange={(e) => updateLink(link.id, "label", e.target.value)}
-                      className="w-full rounded-md border border-border bg-secondary px-3 py-2 text-xs text-foreground font-mono placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                      className="w-full rounded-md border border-border bg-secondary px-3 py-2 text-xs text-foreground font-sans placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                     />
                   </div>
 
@@ -113,7 +113,7 @@ export function SettingsQuickLinks() {
                       value={link.url}
                       placeholder="https://..."
                       onChange={(e) => updateLink(link.id, "url", e.target.value)}
-                      className="w-full rounded-md border border-border bg-secondary px-3 py-2 text-xs text-foreground font-mono placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                      className="w-full rounded-md border border-border bg-secondary px-3 py-2 text-xs text-foreground font-sans placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                     />
                   </div>
 
@@ -125,7 +125,7 @@ export function SettingsQuickLinks() {
                     <select
                       value={link.icon}
                       onChange={(e) => updateLink(link.id, "icon", e.target.value)}
-                      className="w-full rounded-md border border-border bg-secondary px-3 py-2 text-xs text-foreground font-mono focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                      className="w-full rounded-md border border-border bg-secondary px-3 py-2 text-xs text-foreground font-sans focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                     >
                       {iconOptions.map((opt) => (
                         <option key={opt.value} value={opt.value}>
@@ -191,7 +191,7 @@ export function SettingsQuickLinks() {
           Reset Defaults
         </button>
         {saved && (
-          <span className="text-xs font-mono text-primary animate-in fade-in">
+          <span className="text-xs font-sans text-primary animate-in fade-in">
             Quick links updated.
           </span>
         )}

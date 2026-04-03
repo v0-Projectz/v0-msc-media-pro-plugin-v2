@@ -43,7 +43,7 @@ export function VideoCard({ video, onPlay, variant = "grid" }: VideoCardProps) {
             </div>
           </div>
           {/* Duration badge */}
-          <div className="absolute bottom-1 right-1 rounded bg-black/70 px-1.5 py-0.5 text-[9px] font-mono text-white backdrop-blur-sm">
+          <div className="absolute bottom-1 right-1 rounded bg-black/70 px-1.5 py-0.5 text-[9px] font-sans text-white backdrop-blur-sm">
             {video.duration}
           </div>
           {video.completed && (
@@ -64,12 +64,12 @@ export function VideoCard({ video, onPlay, variant = "grid" }: VideoCardProps) {
             </p>
           )}
           <div className="mt-2 flex items-center gap-3">
-            <span className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground">
+            <span className="flex items-center gap-1 text-[10px] font-sans text-muted-foreground">
               <Clock className="h-3 w-3" />
               {video.duration}
             </span>
             {video.views !== undefined && (
-              <span className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground">
+              <span className="flex items-center gap-1 text-[10px] font-sans text-muted-foreground">
                 <Eye className="h-3 w-3" />
                 {video.views.toLocaleString()}
               </span>
@@ -102,7 +102,7 @@ export function VideoCard({ video, onPlay, variant = "grid" }: VideoCardProps) {
         </div>
 
         {/* Duration badge */}
-        <div className="absolute bottom-2 right-2 rounded bg-black/70 px-2 py-0.5 text-[10px] font-mono text-white backdrop-blur-sm">
+        <div className="absolute bottom-2 right-2 rounded bg-black/70 px-2 py-0.5 text-[10px] font-sans text-white backdrop-blur-sm">
           {video.duration}
         </div>
 
@@ -130,12 +130,12 @@ export function VideoCard({ video, onPlay, variant = "grid" }: VideoCardProps) {
           </p>
         )}
         <div className="mt-auto flex items-center gap-3 pt-1">
-          <span className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground">
+          <span className="flex items-center gap-1 text-[10px] font-sans text-muted-foreground">
             <Clock className="h-3 w-3" />
             {video.duration}
           </span>
           {video.views !== undefined && (
-            <span className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground">
+            <span className="flex items-center gap-1 text-[10px] font-sans text-muted-foreground">
               <Eye className="h-3 w-3" />
               {video.views.toLocaleString()}
             </span>

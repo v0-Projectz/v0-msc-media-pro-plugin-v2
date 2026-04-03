@@ -28,7 +28,7 @@ export function SettingsNav({ activeSection, onSectionChange }: SettingsNavProps
         </h2>
         <Badge
           variant="outline"
-          className="border-primary/30 bg-primary/10 text-primary text-[10px] font-mono"
+          className="border-primary/30 bg-primary/10 text-primary text-[10px] font-sans"
         >
           ADMIN
         </Badge>
@@ -59,14 +59,14 @@ export function SettingsNav({ activeSection, onSectionChange }: SettingsNavProps
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
           </span>
-          <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+          <span className="text-[10px] font-sans text-muted-foreground uppercase tracking-wider">
             System Status: Online
           </span>
         </div>
-        <p className="text-[10px] font-mono text-muted-foreground">
+        <p className="text-[10px] font-sans text-muted-foreground">
           Build: MSC PRO PLUGIN v1.0.1
         </p>
-        <p className="text-[10px] font-mono text-muted-foreground">
+        <p className="text-[10px] font-sans text-muted-foreground">
           System: MSC Media Pro
         </p>
       </div>

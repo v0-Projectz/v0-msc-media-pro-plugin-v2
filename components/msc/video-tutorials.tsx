@@ -39,7 +39,7 @@ export function VideoTutorials() {
             Video Tutorials
           </h2>
           <div className="flex items-center gap-3">
-            <p className="text-xs text-muted-foreground font-mono">
+            <p className="text-xs text-muted-foreground font-sans">
               {tutorials.filter((t) => t.completed).length}/{tutorials.length} Completed
             </p>
             <Link
@@ -119,7 +119,7 @@ export function VideoTutorials() {
                   </div>
                 </div>
                 {/* Duration */}
-                <div className="absolute bottom-1 right-1 rounded bg-black/70 px-1.5 py-0.5 text-[9px] font-mono text-white">
+                <div className="absolute bottom-1 right-1 rounded bg-black/70 px-1.5 py-0.5 text-[9px] font-sans text-white">
                   {video.duration}
                 </div>
               </div>

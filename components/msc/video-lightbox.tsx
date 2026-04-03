@@ -64,7 +64,7 @@ export function VideoLightbox({ youtubeId, title, onClose }: VideoLightboxProps)
         </div>
 
         {/* Bottom hint */}
-        <p className="text-center text-[10px] font-mono text-muted-foreground tracking-wider">
+        <p className="text-center text-[10px] font-sans text-muted-foreground tracking-wider">
           PRESS ESC OR CLICK OUTSIDE TO CLOSE
         </p>
       </div>

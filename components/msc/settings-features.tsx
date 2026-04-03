@@ -188,7 +188,7 @@ export function SettingsFeatures() {
           <h3 className="text-xs font-bold text-card-foreground uppercase tracking-wider">
             Sidebar Pages
           </h3>
-          <span className="text-[10px] font-mono text-muted-foreground">
+          <span className="text-[10px] font-sans text-muted-foreground">
             {enabledCount}/{features.length} Active
           </span>
         </div>
@@ -221,7 +221,7 @@ export function SettingsFeatures() {
                     {feature.label}
                   </p>
                   {feature.locked && (
-                    <span className="rounded border border-border bg-muted px-1.5 py-0.5 text-[9px] font-mono text-muted-foreground uppercase">
+                    <span className="rounded border border-border bg-muted px-1.5 py-0.5 text-[9px] font-sans text-muted-foreground uppercase">
                       Locked
                     </span>
                   )}
@@ -246,7 +246,7 @@ export function SettingsFeatures() {
           <h3 className="text-xs font-bold text-card-foreground uppercase tracking-wider">
             Dashboard Widgets
           </h3>
-          <span className="text-[10px] font-mono text-muted-foreground">
+          <span className="text-[10px] font-sans text-muted-foreground">
             {widgetCount}/{widgets.length} Active
           </span>
         </div>
@@ -311,7 +311,7 @@ export function SettingsFeatures() {
           Reset All
         </button>
         {saved && (
-          <span className="text-xs font-mono text-primary animate-in fade-in">
+          <span className="text-xs font-sans text-primary animate-in fade-in">
             Visibility updated.
           </span>
         )}

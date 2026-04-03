@@ -113,13 +113,13 @@ export function SettingsAccess() {
 
         {/* Table header */}
         <div className="mb-2 grid grid-cols-[1fr_80px_80px] gap-4 px-4">
-          <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+          <span className="text-[10px] font-sans text-muted-foreground uppercase tracking-wider">
             Role
           </span>
-          <span className="text-center text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+          <span className="text-center text-[10px] font-sans text-muted-foreground uppercase tracking-wider">
             View
           </span>
-          <span className="text-center text-[10px] font-mono text-muted-foreground uppercase tracking-wider">
+          <span className="text-center text-[10px] font-sans text-muted-foreground uppercase tracking-wider">
             Edit
           </span>
         </div>
@@ -175,7 +175,7 @@ export function SettingsAccess() {
             <Shield className="h-5 w-5 text-primary" />
           </div>
           <div className="mt-3 flex items-center gap-3">
-            <code className="flex-1 rounded-md border border-border bg-muted px-3 py-2 text-xs font-mono text-foreground">
+            <code className="flex-1 rounded-md border border-border bg-muted px-3 py-2 text-xs font-sans text-foreground">
               {apiKeyVisible ? apiKey : "msc_pro_sk_live_••••••••••••••••"}
             </code>
             <button
@@ -226,7 +226,7 @@ export function SettingsAccess() {
           Reset Defaults
         </button>
         {saved && (
-          <span className="text-xs font-mono text-primary animate-in fade-in">
+          <span className="text-xs font-sans text-primary animate-in fade-in">
             Access updated.
           </span>
         )}
