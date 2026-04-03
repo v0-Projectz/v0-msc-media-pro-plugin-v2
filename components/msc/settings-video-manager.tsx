@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Video, Save, RotateCcw, ExternalLink, Play, Pencil, Check, X } from "lucide-react"
+import { Video, Save, RotateCcw, ExternalLink, Play, Pencil, Check, X, Plus, Trash2 } from "lucide-react"
 import { toast } from "sonner"
 import Image from "next/image"
 
@@ -165,6 +165,31 @@ export function SettingsVideoManager() {
     toast.info("Reset to default videos")
   }
 
+  const handleAddVideo = () => {
+    const newVideo: VideoEntry = {
+      id: `${Date.now()}`,
+      title: "New Video",
+      description: "Add your video description here",
+      category: "content",
+      youtubeId: "",
+      thumbnail: "/thumbnails/adding-blog-post.jpg",
+      duration: "0:00",
+    }
+    setVideos(prev => [...prev, newVideo])
+    setHasChanges(true)
+    toast.success("New video added. Edit it to set the YouTube ID.")
+    // Auto-scroll to new video (optional - you can remove if not needed)
+    setTimeout(() => {
+      startEditing(newVideo)
+    }, 100)
+  }
+
+  const handleDeleteVideo = (id: string) => {
+    setVideos(prev => prev.filter(v => v.id !== id))
+    setHasChanges(true)
+    toast.success("Video removed")
+  }
+
   const getYouTubeThumbnail = (youtubeId: string) => {
     return `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`
   }
@@ -187,6 +212,13 @@ export function SettingsVideoManager() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <button
+            onClick={handleAddVideo}
+            className="flex items-center gap-2 rounded-md border border-primary/30 bg-primary/10 px-3 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
+          >
+            <Plus className="h-4 w-4" />
+            Add Video
+          </button>
           <button
             onClick={handleReset}
             className="flex items-center gap-2 rounded-md border border-border bg-secondary px-3 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
@@ -347,13 +379,22 @@ export function SettingsVideoManager() {
                         {video.description}
                       </p>
                     </div>
-                    <button
-                      onClick={() => startEditing(video)}
-                      className="shrink-0 flex items-center gap-1 rounded-md border border-border bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground hover:bg-secondary/80 hover:border-primary/30"
-                    >
-                      <Pencil className="h-3 w-3" />
-                      Edit
-                    </button>
+                    <div className="flex items-center gap-1 shrink-0">
+                      <button
+                        onClick={() => startEditing(video)}
+                        className="flex items-center gap-1 rounded-md border border-border bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground hover:bg-secondary/80 hover:border-primary/30"
+                      >
+                        <Pencil className="h-3 w-3" />
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDeleteVideo(video.id)}
+                        className="flex items-center gap-1 rounded-md border border-border/50 bg-destructive/10 px-2 py-1 text-xs font-medium text-destructive hover:bg-destructive/20 hover:border-destructive/50"
+                      >
+                        <Trash2 className="h-3 w-3" />
+                        Delete
+                      </button>
+                    </div>
                   </div>
 
                   <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
@@ -383,9 +424,15 @@ export function SettingsVideoManager() {
 
       {/* Add new video section */}
       <div className="border-t border-border pt-6">
-        <p className="text-sm text-muted-foreground text-center">
-          Need to add more videos? Contact your developer to expand the video library.
-        </p>
+        <button
+          onClick={handleAddVideo}
+          className="w-full flex items-center justify-center gap-2 rounded-lg border-2 border-dashed border-border py-8 text-center transition-colors hover:border-primary/50 hover:bg-primary/5"
+        >
+          <Plus className="h-5 w-5 text-muted-foreground" />
+          <span className="text-sm font-medium text-muted-foreground">
+            Add a new video to your library
+          </span>
+        </button>
       </div>
     </div>
   )
