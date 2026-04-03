@@ -13,6 +13,8 @@ interface VideoEntry {
   youtubeId: string
   thumbnail: string
   duration: string
+  customThumbnail?: string
+  useCustomThumbnail?: boolean
 }
 
 // Default videos from config
@@ -128,6 +130,8 @@ export function SettingsVideoManager() {
       description: video.description,
       youtubeId: video.youtubeId,
       duration: video.duration,
+      customThumbnail: video.customThumbnail || "",
+      useCustomThumbnail: video.useCustomThumbnail || false,
     })
   }
 
@@ -137,11 +141,13 @@ export function SettingsVideoManager() {
   }
 
   const saveEditing = (id: string) => {
-    setVideos(prev => prev.map(v => 
-      v.id === id 
-        ? { ...v, ...editValues }
-        : v
-    ))
+    setVideos(prev => prev.map(v => {
+      if (v.id !== id) return v
+      const updatedThumbnail = editValues.useCustomThumbnail && editValues.customThumbnail
+        ? editValues.customThumbnail
+        : v.thumbnail
+      return { ...v, ...editValues, thumbnail: updatedThumbnail }
+    }))
     setEditingId(null)
     setEditValues({})
     setHasChanges(true)
@@ -335,22 +341,87 @@ export function SettingsVideoManager() {
                   />
                 </div>
 
-                {/* Preview */}
-                {editValues.youtubeId && (
-                  <div className="mt-2">
-                    <span className="block text-xs font-medium text-muted-foreground mb-1.5">
-                      Thumbnail Preview
-                    </span>
-                    <div className="relative aspect-video w-48 overflow-hidden rounded-md bg-muted">
-                      <Image
-                        src={getYouTubeThumbnail(editValues.youtubeId)}
-                        alt="YouTube thumbnail preview"
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
+                {/* Thumbnail source */}
+                <div className="space-y-3">
+                  <label className="block text-xs font-medium text-muted-foreground">
+                    Thumbnail Source
+                  </label>
+
+                  {/* Toggle */}
+                  <div className="flex rounded-md border border-border overflow-hidden w-fit">
+                    <button
+                      type="button"
+                      onClick={() => setEditValues(prev => ({ ...prev, useCustomThumbnail: false }))}
+                      className={`px-4 py-2 text-xs font-medium transition-colors ${
+                        !editValues.useCustomThumbnail
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                      }`}
+                    >
+                      Auto from YouTube
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditValues(prev => ({ ...prev, useCustomThumbnail: true }))}
+                      className={`px-4 py-2 text-xs font-medium transition-colors border-l border-border ${
+                        editValues.useCustomThumbnail
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                      }`}
+                    >
+                      Custom URL
+                    </button>
                   </div>
-                )}
+
+                  {/* Custom URL input */}
+                  {editValues.useCustomThumbnail ? (
+                    <div className="space-y-2">
+                      <input
+                        type="url"
+                        value={editValues.customThumbnail || ""}
+                        onChange={(e) => setEditValues(prev => ({ ...prev, customThumbnail: e.target.value }))}
+                        placeholder="https://example.com/thumbnail.jpg"
+                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                      />
+                      {editValues.customThumbnail && (
+                        <div className="relative aspect-video w-48 overflow-hidden rounded-md bg-muted">
+                          <Image
+                            src={editValues.customThumbnail}
+                            alt="Custom thumbnail preview"
+                            fill
+                            className="object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = "/thumbnails/adding-blog-post.jpg"
+                            }}
+                          />
+                          <div className="absolute bottom-1 right-1 rounded bg-black/60 px-1.5 py-0.5 text-[10px] text-white">
+                            Custom
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    /* Auto YouTube thumbnail preview */
+                    editValues.youtubeId && (
+                      <div className="space-y-1">
+                        <div className="relative aspect-video w-48 overflow-hidden rounded-md bg-muted">
+                          <Image
+                            src={getYouTubeThumbnail(editValues.youtubeId)}
+                            alt="YouTube thumbnail preview"
+                            fill
+                            className="object-cover"
+                          />
+                          <div className="absolute bottom-1 right-1 rounded bg-black/60 px-1.5 py-0.5 text-[10px] text-white">
+                            YouTube
+                          </div>
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                          Auto-pulled from your YouTube video
+                        </p>
+                      </div>
+                    )
+                  )}
+                </div>
               </div>
             ) : (
               // View mode
