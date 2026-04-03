@@ -29,7 +29,7 @@ export function SystemStatus() {
         <div className="flex items-center gap-2">
           <div className="h-8 w-1 rounded-full bg-primary" />
           <div>
-            <p className="text-sm text-card-foreground font-mono">MSC Core: v1.0.0</p>
+            <p className="text-sm text-card-foreground font-sans">MSC Core: v1.0.0</p>
             <div className="mt-1 flex gap-2">
               <StatusBadge status="online" />
             </div>

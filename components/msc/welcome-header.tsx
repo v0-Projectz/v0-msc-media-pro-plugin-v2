@@ -4,7 +4,7 @@ export function WelcomeHeader() {
   return (
     <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
       <div>
-        <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
+        <p className="text-xs font-sans text-muted-foreground tracking-widest uppercase">
           Studio Mode
         </p>
         <h1 className="text-3xl font-bold text-foreground tracking-tight lg:text-4xl">
