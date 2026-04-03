@@ -75,21 +75,21 @@ export default function VideosPage() {
           </p>
         </div>
 
-        {/* Toolbar */}
-        <div className="mb-6">
-          <VideosToolbar
-            search={search}
-            onSearchChange={setSearch}
-            view={view}
-            onViewChange={setView}
-            totalVideos={videos.length}
-          />
-        </div>
-
         {/* Content grid */}
         <div className="grid gap-6 lg:grid-cols-[1fr_260px]">
           {/* Main video grid / list */}
           <div>
+            {/* Toolbar */}
+            <div className="mb-6">
+              <VideosToolbar
+                search={search}
+                onSearchChange={setSearch}
+                view={view}
+                onViewChange={setView}
+                totalVideos={videos.length}
+              />
+            </div>
+
             {/* Category pills — inline for quick switching */}
             <div className="mb-5 flex flex-wrap gap-2">
               {categories.map((cat) => {
