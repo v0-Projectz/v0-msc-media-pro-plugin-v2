@@ -79,7 +79,7 @@ export function VideoTutorials() {
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
               className={cn(
-                "rounded-full border px-4 py-1.5 text-xs font-medium transition-colors",
+                "rounded-md border px-4 py-1.5 text-xs font-medium transition-colors",
                 activeCategory === cat.id
                   ? "border-accent bg-accent/10 text-accent"
                   : "border-border bg-secondary text-muted-foreground hover:border-muted-foreground/40 hover:text-secondary-foreground"

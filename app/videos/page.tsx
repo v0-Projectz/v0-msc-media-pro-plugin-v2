@@ -120,8 +120,8 @@ export default function VideosPage() {
                     onClick={() => setActiveCategory(cat.id)}
                     className={
                       activeCategory === cat.id
-                        ? "rounded-full border border-accent bg-accent/10 px-4 py-1.5 text-xs font-medium text-accent transition-colors"
-                        : "rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-muted-foreground/40 hover:text-secondary-foreground"
+                        ? "rounded-md border border-accent bg-accent/10 px-4 py-1.5 text-xs font-medium text-accent transition-colors"
+                        : "rounded-md border border-border bg-secondary px-4 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:border-muted-foreground/40 hover:text-secondary-foreground"
                     }
                   >
                     {cat.label}
