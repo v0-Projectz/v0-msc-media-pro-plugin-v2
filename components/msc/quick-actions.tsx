@@ -11,7 +11,7 @@ const actions = [
   },
   {
     icon: RotateCcw,
-    label: "Reset Engine & Purge Cache",
+    label: "Reset MSC Engine",
     variant: "destructive" as const,
   },
   {
