@@ -362,19 +362,30 @@ export function SettingsVideoManager() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setEditValues(prev => ({ ...prev, useCustomThumbnail: true }))}
+                      onClick={() => setEditValues(prev => ({ ...prev, useCustomThumbnail: true, thumbnailSource: "url" }))}
                       className={`px-4 py-2 text-xs font-medium transition-colors border-l border-border ${
-                        editValues.useCustomThumbnail
+                        editValues.useCustomThumbnail && editValues.thumbnailSource === "url"
                           ? "bg-primary text-primary-foreground"
                           : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                       }`}
                     >
                       Custom URL
                     </button>
+                    <button
+                      type="button"
+                      onClick={() => setEditValues(prev => ({ ...prev, useCustomThumbnail: true, thumbnailSource: "library" }))}
+                      className={`px-4 py-2 text-xs font-medium transition-colors border-l border-border ${
+                        editValues.useCustomThumbnail && editValues.thumbnailSource === "library"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                      }`}
+                    >
+                      Media Library
+                    </button>
                   </div>
 
                   {/* Custom URL input */}
-                  {editValues.useCustomThumbnail ? (
+                  {editValues.useCustomThumbnail && editValues.thumbnailSource === "url" ? (
                     <div className="space-y-2">
                       <input
                         type="url"
@@ -399,6 +410,23 @@ export function SettingsVideoManager() {
                           </div>
                         </div>
                       )}
+                    </div>
+                  ) : editValues.useCustomThumbnail && editValues.thumbnailSource === "library" ? (
+                    <div className="space-y-2">
+                      <p className="text-xs text-muted-foreground mb-2">
+                        Select an image from your Media Library
+                      </p>
+                      <div className="rounded-md border border-dashed border-border bg-secondary/30 p-4 text-center">
+                        <p className="text-sm text-muted-foreground mb-3">
+                          Media Library integration coming soon
+                        </p>
+                        <button
+                          type="button"
+                          className="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                        >
+                          Browse Media Library
+                        </button>
+                      </div>
                     </div>
                   ) : (
                     /* Auto YouTube thumbnail preview */
