@@ -15,6 +15,8 @@ interface VideoEntry {
   duration: string
   customThumbnail?: string
   useCustomThumbnail?: boolean
+  thumbnailSource?: "url" | "library"
+  customVideoUrl?: string
 }
 
 // Default videos from config
@@ -451,7 +453,42 @@ export function SettingsVideoManager() {
                   )}
                 </div>
               </div>
-            ) : (
+
+              {/* Custom Video URL */}
+              <div className="space-y-2">
+                <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  Custom Video URL
+                </label>
+                <p className="text-xs text-muted-foreground">
+                  Override the YouTube ID above with a full video link — YouTube, Vimeo, or any other platform.
+                </p>
+                <div className="flex gap-2">
+                  <div className="relative flex-1">
+                    <ExternalLink className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground pointer-events-none" />
+                    <input
+                      type="url"
+                      value={editValues.customVideoUrl || ""}
+                      onChange={(e) => setEditValues(prev => ({ ...prev, customVideoUrl: e.target.value }))}
+                      placeholder="https://www.youtube.com/watch?v=... or https://vimeo.com/..."
+                      className="w-full rounded-md border border-border bg-secondary pl-9 pr-3 py-2 text-sm text-foreground font-sans placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+                    />
+                  </div>
+                  {editValues.customVideoUrl && (
+                    <button
+                      type="button"
+                      onClick={() => setEditValues(prev => ({ ...prev, customVideoUrl: "" }))}
+                      className="rounded-md border border-border bg-secondary px-3 py-2 text-xs text-muted-foreground hover:border-primary/30 hover:text-foreground transition-colors"
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
+                {editValues.customVideoUrl && (
+                  <p className="text-xs text-primary">
+                    This link will be used for playback instead of the YouTube ID.
+                  </p>
+                )}
+              </div>
               // View mode
               <div className="flex items-start gap-4">
                 {/* Thumbnail */}
