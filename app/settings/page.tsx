@@ -10,6 +10,7 @@ import { SettingsFeatures } from "@/components/msc/settings-features"
 import { SettingsColors } from "@/components/msc/settings-colors"
 import { SettingsQuickLinks } from "@/components/msc/settings-quick-links"
 import { SettingsAccess } from "@/components/msc/settings-access"
+import { SettingsCustomToolz } from "@/components/msc/settings-custom-toolz"
 
 const sectionComponents: Record<string, React.FC> = {
   branding: SettingsBranding,
@@ -17,6 +18,7 @@ const sectionComponents: Record<string, React.FC> = {
   colors: SettingsColors,
   "quick-links": SettingsQuickLinks,
   access: SettingsAccess,
+  "custom-toolz": SettingsCustomToolz,
 }
 
 export default function SettingsPage() {
