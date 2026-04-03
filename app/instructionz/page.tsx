@@ -1,8 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
 import { SidebarNav } from "@/components/msc/sidebar-nav"
 import { InstructionzQuickNav } from "@/components/msc/instructionz-quick-nav"
 import { InstructionzOverview } from "@/components/msc/instructionz-overview"
@@ -50,17 +48,6 @@ export default function InstructionzPage() {
           {/* Main content area */}
           <div className="min-w-0">
             <ActiveComponent />
-
-            {/* Back to home */}
-            <div className="mt-8">
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 rounded-md border border-border bg-secondary px-4 py-2.5 text-xs font-medium text-secondary-foreground uppercase tracking-wider transition-colors hover:border-primary/40 hover:text-primary"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" />
-                Back to Home
-              </Link>
-            </div>
           </div>
 
           {/* Right sidebar */}
