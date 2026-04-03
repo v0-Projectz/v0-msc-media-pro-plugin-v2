@@ -452,10 +452,9 @@ export function SettingsVideoManager() {
                     )
                   )}
                 </div>
-              </div>
 
-              {/* Custom Video URL */}
-              <div className="space-y-2">
+                {/* Custom Video URL */}
+                <div className="space-y-3">
                 <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
                   Custom Video URL
                 </label>
@@ -488,6 +487,7 @@ export function SettingsVideoManager() {
                     This link will be used for playback instead of the YouTube ID.
                   </p>
                 )}
+                </div>
               </div>
             ) : (
               /* View mode */
