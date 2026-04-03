@@ -1,6 +1,6 @@
 "use client"
 
-import { Search, LayoutGrid, List, SlidersHorizontal } from "lucide-react"
+import { Search, LayoutGrid, List } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface VideosToolbarProps {
@@ -8,8 +8,6 @@ interface VideosToolbarProps {
   onSearchChange: (val: string) => void
   view: "grid" | "list"
   onViewChange: (val: "grid" | "list") => void
-  sortBy: string
-  onSortChange: (val: string) => void
   totalVideos: number
 }
 
@@ -18,8 +16,6 @@ export function VideosToolbar({
   onSearchChange,
   view,
   onViewChange,
-  sortBy,
-  onSortChange,
   totalVideos,
 }: VideosToolbarProps) {
   return (
@@ -36,49 +32,32 @@ export function VideosToolbar({
         />
       </div>
 
-      <div className="flex items-center gap-3">
-        {/* Sort */}
-        <div className="relative flex items-center gap-1.5">
-          <SlidersHorizontal className="h-3.5 w-3.5 text-muted-foreground" />
-          <select
-            value={sortBy}
-            onChange={(e) => onSortChange(e.target.value)}
-            className="appearance-none rounded-md border border-border bg-secondary px-3 py-2 pr-7 text-xs text-foreground focus:border-primary/50 focus:outline-none"
-          >
-            <option value="newest">Newest</option>
-            <option value="title">A-Z</option>
-            <option value="duration">Duration</option>
-            <option value="incomplete">Incomplete First</option>
-          </select>
-        </div>
-
-        {/* View toggle */}
-        <div className="flex overflow-hidden rounded-md border border-border">
-          <button
-            onClick={() => onViewChange("grid")}
-            className={cn(
-              "flex items-center justify-center px-2.5 py-2 transition-colors",
-              view === "grid"
-                ? "bg-primary/10 text-primary"
-                : "bg-secondary text-muted-foreground hover:text-foreground"
-            )}
-            aria-label="Grid view"
-          >
-            <LayoutGrid className="h-4 w-4" />
-          </button>
-          <button
-            onClick={() => onViewChange("list")}
-            className={cn(
-              "flex items-center justify-center border-l border-border px-2.5 py-2 transition-colors",
-              view === "list"
-                ? "bg-primary/10 text-primary"
-                : "bg-secondary text-muted-foreground hover:text-foreground"
-            )}
-            aria-label="List view"
-          >
-            <List className="h-4 w-4" />
-          </button>
-        </div>
+      {/* View toggle */}
+      <div className="flex overflow-hidden rounded-md border border-border">
+        <button
+          onClick={() => onViewChange("grid")}
+          className={cn(
+            "flex items-center justify-center px-2.5 py-2 transition-colors",
+            view === "grid"
+              ? "bg-primary/10 text-primary"
+              : "bg-secondary text-muted-foreground hover:text-foreground"
+          )}
+          aria-label="Grid view"
+        >
+          <LayoutGrid className="h-4 w-4" />
+        </button>
+        <button
+          onClick={() => onViewChange("list")}
+          className={cn(
+            "flex items-center justify-center border-l border-border px-2.5 py-2 transition-colors",
+            view === "list"
+              ? "bg-primary/10 text-primary"
+              : "bg-secondary text-muted-foreground hover:text-foreground"
+          )}
+          aria-label="List view"
+        >
+          <List className="h-4 w-4" />
+        </button>
       </div>
     </div>
   )

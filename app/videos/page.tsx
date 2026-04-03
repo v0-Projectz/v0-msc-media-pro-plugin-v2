@@ -23,7 +23,6 @@ export default function VideosPage() {
   const [activeCategory, setActiveCategory] = useState("all")
   const [search, setSearch] = useState("")
   const [view, setView] = useState<"grid" | "list">("grid")
-  const [sortBy, setSortBy] = useState("newest")
   const [lightboxVideo, setLightboxVideo] = useState<VideoData | null>(null)
   const [videos, setVideos] = useState<VideoData[]>(storedVideos)
 
@@ -59,7 +58,7 @@ export default function VideosPage() {
     }
 
     return result
-  }, [videos, activeCategory, search, sortBy])
+  }, [videos, activeCategory, search])
 
   function handlePlay(video: VideoData) {
     setLightboxVideo(video)
@@ -97,8 +96,6 @@ export default function VideosPage() {
             onSearchChange={setSearch}
             view={view}
             onViewChange={setView}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
             totalVideos={videos.length}
           />
         </div>
