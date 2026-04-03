@@ -50,31 +50,32 @@ export function VideosToolbar({
         </select>
 
         {/* View toggle */}
-      <div className="flex overflow-hidden rounded-md border border-border">
-        <button
-          onClick={() => onViewChange("grid")}
-          className={cn(
-            "flex items-center justify-center px-2.5 py-2 transition-colors",
-            view === "grid"
-              ? "bg-primary/10 text-primary"
-              : "bg-secondary text-muted-foreground hover:text-foreground"
-          )}
-          aria-label="Grid view"
-        >
-          <LayoutGrid className="h-4 w-4" />
-        </button>
-        <button
-          onClick={() => onViewChange("list")}
-          className={cn(
-            "flex items-center justify-center border-l border-border px-2.5 py-2 transition-colors",
-            view === "list"
-              ? "bg-primary/10 text-primary"
-              : "bg-secondary text-muted-foreground hover:text-foreground"
-          )}
-          aria-label="List view"
-        >
-          <List className="h-4 w-4" />
-        </button>
+        <div className="flex overflow-hidden rounded-md border border-border">
+          <button
+            onClick={() => onViewChange("grid")}
+            className={cn(
+              "flex items-center justify-center px-2.5 py-2 transition-colors",
+              view === "grid"
+                ? "bg-primary/10 text-primary"
+                : "bg-secondary text-muted-foreground hover:text-foreground"
+            )}
+            aria-label="Grid view"
+          >
+            <LayoutGrid className="h-4 w-4" />
+          </button>
+          <button
+            onClick={() => onViewChange("list")}
+            className={cn(
+              "flex items-center justify-center border-l border-border px-2.5 py-2 transition-colors",
+              view === "list"
+                ? "bg-primary/10 text-primary"
+                : "bg-secondary text-muted-foreground hover:text-foreground"
+            )}
+            aria-label="List view"
+          >
+            <List className="h-4 w-4" />
+          </button>
+        </div>
       </div>
     </div>
   )
