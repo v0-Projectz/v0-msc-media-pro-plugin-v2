@@ -11,7 +11,6 @@ interface VideosToolbarProps {
   sortBy: string
   onSortChange: (val: string) => void
   totalVideos: number
-  completedCount: number
 }
 
 export function VideosToolbar({
@@ -22,7 +21,6 @@ export function VideosToolbar({
   sortBy,
   onSortChange,
   totalVideos,
-  completedCount,
 }: VideosToolbarProps) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -39,19 +37,6 @@ export function VideosToolbar({
       </div>
 
       <div className="flex items-center gap-3">
-        {/* Progress */}
-        <div className="flex items-center gap-2">
-          <div className="h-1.5 w-20 overflow-hidden rounded-full bg-secondary">
-            <div
-              className="h-full rounded-full bg-primary transition-all"
-              style={{ width: `${totalVideos > 0 ? (completedCount / totalVideos) * 100 : 0}%` }}
-            />
-          </div>
-          <span className="text-[10px] font-mono text-muted-foreground">
-            {completedCount}/{totalVideos}
-          </span>
-        </div>
-
         {/* Sort */}
         <div className="relative flex items-center gap-1.5">
           <SlidersHorizontal className="h-3.5 w-3.5 text-muted-foreground" />

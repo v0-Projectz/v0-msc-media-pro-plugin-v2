@@ -100,7 +100,6 @@ export default function VideosPage() {
             sortBy={sortBy}
             onSortChange={setSortBy}
             totalVideos={videos.length}
-            completedCount={videos.filter((v) => v.completed).length}
           />
         </div>
 
