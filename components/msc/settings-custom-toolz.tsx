@@ -159,7 +159,7 @@ export function SettingsCustomToolz() {
           <h3 className="text-xs font-bold text-card-foreground uppercase tracking-wider">
             Display Elements
           </h3>
-          <span className="text-[10px] font-mono text-muted-foreground">
+          <span className="text-[10px] font-sans text-muted-foreground">
             {enabledCount}/{moduleSettings.length} Active
           </span>
         </div>
@@ -253,7 +253,7 @@ export function SettingsCustomToolz() {
                     setSaved(false)
                   }}
                   className={cn(
-                    "flex h-10 w-10 items-center justify-center rounded-md border text-sm font-mono transition-colors",
+                    "flex h-10 w-10 items-center justify-center rounded-md border text-sm font-sans transition-colors",
                     columnsDesktop === num
                       ? "border-primary/30 bg-primary/10 text-primary"
                       : "border-border bg-secondary text-muted-foreground hover:bg-secondary/80"
@@ -278,7 +278,7 @@ export function SettingsCustomToolz() {
                     setSaved(false)
                   }}
                   className={cn(
-                    "flex h-10 w-10 items-center justify-center rounded-md border text-sm font-mono transition-colors",
+                    "flex h-10 w-10 items-center justify-center rounded-md border text-sm font-sans transition-colors",
                     columnsMobile === num
                       ? "border-primary/30 bg-primary/10 text-primary"
                       : "border-border bg-secondary text-muted-foreground hover:bg-secondary/80"
@@ -321,7 +321,7 @@ export function SettingsCustomToolz() {
             )}
           </div>
         </div>
-        <p className="mt-3 text-[10px] font-mono text-muted-foreground text-center">
+        <p className="mt-3 text-[10px] font-sans text-muted-foreground text-center">
           Layout: {layoutOptions.find((l) => l.id === selectedLayout)?.label} | 
           Columns: {columnsDesktop} (Desktop) / {columnsMobile} (Mobile)
         </p>
@@ -350,7 +350,7 @@ export function SettingsCustomToolz() {
           Reset Defaults
         </button>
         {saved && (
-          <span className="text-xs font-mono text-primary animate-in fade-in">
+          <span className="text-xs font-sans text-primary animate-in fade-in">
             Module settings updated.
           </span>
         )}

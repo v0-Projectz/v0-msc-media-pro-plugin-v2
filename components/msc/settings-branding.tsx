@@ -96,7 +96,7 @@ export function SettingsBranding() {
             type="text"
             value={settings.pluginName}
             onChange={(e) => handleChange("pluginName", e.target.value)}
-            className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-mono placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+            className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-sans placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
           />
         </div>
 
@@ -116,7 +116,7 @@ export function SettingsBranding() {
             type="text"
             value={settings.tagline}
             onChange={(e) => handleChange("tagline", e.target.value)}
-            className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-mono placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+            className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-sans placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
           />
         </div>
       </div>
@@ -137,7 +137,7 @@ export function SettingsBranding() {
           type="text"
           value={settings.welcomeMessage}
           onChange={(e) => handleChange("welcomeMessage", e.target.value)}
-          className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-mono placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+          className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-sans placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
         />
       </div>
 
@@ -158,7 +158,7 @@ export function SettingsBranding() {
             type="text"
             value={settings.footerCredit}
             onChange={(e) => handleChange("footerCredit", e.target.value)}
-            className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-mono placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+            className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-sans placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
           />
         </div>
 
@@ -177,7 +177,7 @@ export function SettingsBranding() {
             type="text"
             value={settings.footerPoweredBy}
             onChange={(e) => handleChange("footerPoweredBy", e.target.value)}
-            className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-mono placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
+            className="w-full rounded-md border border-border bg-secondary px-3 py-2.5 text-sm text-foreground font-sans placeholder:text-muted-foreground focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
           />
         </div>
       </div>

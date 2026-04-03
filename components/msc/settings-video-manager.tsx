@@ -311,7 +311,7 @@ export function SettingsVideoManager() {
                       value={editValues.youtubeId || ""}
                       onChange={(e) => setEditValues(prev => ({ ...prev, youtubeId: e.target.value }))}
                       placeholder="e.g. dQw4w9WgXcQ"
-                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary font-mono"
+                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary font-sans"
                     />
                   </div>
                 </div>
