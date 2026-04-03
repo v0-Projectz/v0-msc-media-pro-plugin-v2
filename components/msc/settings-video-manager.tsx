@@ -473,7 +473,7 @@ export function SettingsVideoManager() {
                       {categoryLabels[video.category] || video.category}
                     </span>
                     <span>{video.duration}</span>
-                    <span className="font-mono text-primary">
+                    <span className="font-sans text-primary">
                       ID: {video.youtubeId}
                     </span>
                     <a
