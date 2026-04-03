@@ -38,7 +38,7 @@ export const VIDEO_CATEGORIES = [
  * Each video has a youtubeId field - replace the placeholder
  * with your actual YouTube video ID.
  * 
- * Current placeholder: "dQw4w9WgXcQ" (Rick Astley)
+ * All videos use the default YouTube thumbnail design.
  */
 export const ALL_VIDEOS: VideoConfig[] = [
   {
@@ -47,7 +47,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Learn how to create and publish a new blog post in WordPress using the Divi builder.",
     category: "content",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/adding-blog-post.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "4:32",
     completed: false,
     views: 128,
@@ -58,7 +58,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Master the WordPress media library and create stunning image galleries with Divi.",
     category: "content",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/uploading-images.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "6:15",
     completed: false,
     views: 94,
@@ -69,7 +69,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Embed and manage YouTube videos on your pages using Presto Player integration.",
     category: "content",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/embedding-youtube.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "3:48",
     completed: false,
     views: 76,
@@ -80,7 +80,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Optimize your page titles, descriptions, and Open Graph tags for search engines.",
     category: "seo",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/seo-meta.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "5:22",
     completed: false,
     views: 61,
@@ -91,7 +91,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Customize typography across your site using Divi Theme Options and Google Fonts.",
     category: "site-basics",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/changing-fonts.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "3:10",
     completed: false,
     views: 112,
@@ -102,7 +102,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Set up Mailchimp, ConvertKit, or ActiveCampaign email opt-in forms on your site.",
     category: "site-basics",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/email-optin.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "7:45",
     completed: false,
     views: 89,
@@ -113,7 +113,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Install and configure Google Analytics 4 tracking on your WordPress site.",
     category: "seo",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/google-analytics.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "4:58",
     completed: false,
     views: 143,
@@ -124,7 +124,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Configure automated backups with WPvivid and learn manual backup best practices.",
     category: "support",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/backup-strategy.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "8:12",
     completed: false,
     views: 67,
@@ -135,7 +135,7 @@ export const ALL_VIDEOS: VideoConfig[] = [
     description: "Fix common video playback problems including Bunny.net and Presto Player errors.",
     category: "support",
     youtubeId: "dQw4w9WgXcQ",  // <-- REPLACE WITH YOUR VIDEO ID
-    thumbnail: "/thumbnails/troubleshooting-video.jpg",
+    thumbnail: "/thumbnails/default-video-thumbnail.jpg",
     duration: "5:30",
     completed: false,
     views: 55,
