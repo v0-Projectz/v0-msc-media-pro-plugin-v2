@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { SidebarNav } from "@/components/msc/sidebar-nav"
 import { SettingsNav } from "@/components/msc/settings-nav"
 import { SettingsBranding } from "@/components/msc/settings-branding"
@@ -22,7 +23,18 @@ const sectionComponents: Record<string, React.FC> = {
 }
 
 export default function SettingsPage() {
-  const [activeSection, setActiveSection] = useState("branding")
+  const searchParams = useSearchParams()
+  const sectionParam = searchParams.get("section")
+  const [activeSection, setActiveSection] = useState(
+    sectionParam && sectionComponents[sectionParam] ? sectionParam : "branding"
+  )
+
+  // Update active section when URL query param changes
+  useEffect(() => {
+    if (sectionParam && sectionComponents[sectionParam]) {
+      setActiveSection(sectionParam)
+    }
+  }, [sectionParam])
 
   const ActiveComponent = sectionComponents[activeSection] ?? SettingsBranding
 
