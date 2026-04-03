@@ -8,7 +8,7 @@ export function WelcomeHeader() {
           Studio Mode
         </p>
         <h1 className="text-3xl font-bold text-foreground tracking-tight lg:text-4xl">
-          MSC Media Pro
+          MSC Media Pro v2
         </h1>
         <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
           Welcome to the Studio. Your site is healthy.
