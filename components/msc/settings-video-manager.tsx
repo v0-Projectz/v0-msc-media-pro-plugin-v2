@@ -489,7 +489,8 @@ export function SettingsVideoManager() {
                   </p>
                 )}
               </div>
-              // View mode
+            ) : (
+              /* View mode */
               <div className="flex items-start gap-4">
                 {/* Thumbnail */}
                 <div className="relative aspect-video w-32 shrink-0 overflow-hidden rounded-md bg-muted">
