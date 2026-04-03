@@ -20,7 +20,7 @@ const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/" },
   { icon: Video, label: "Videos", href: "/videos" },
   { icon: Settings, label: "Settings", href: "/settings" },
-  { icon: Wrench, label: "Custom Toolz", href: "#" },
+  { icon: Wrench, label: "Custom Toolz", href: "/custom-toolz" },
   { icon: AlertTriangle, label: "Troubleshooting", href: "/troubleshooting" },
   { icon: BookOpen, label: "Instructionz", href: "/instructionz" },
 ]
