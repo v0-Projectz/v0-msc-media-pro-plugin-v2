@@ -20,52 +20,10 @@ export function VideosSidebar({
   onCategoryChange,
   activeVideoId,
 }: VideosSidebarProps) {
-  const completedCount = videos.filter((v) => v.completed).length
   const totalCount = videos.length
-  const percentage = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Progress Card */}
-      <div className="rounded-lg border border-border bg-card p-5">
-        <h3 className="mb-3 text-xs font-bold text-card-foreground uppercase tracking-wider">
-          Learning Progress
-        </h3>
-        <div className="flex items-center gap-3">
-          <div className="relative flex h-16 w-16 shrink-0 items-center justify-center">
-            <svg className="h-16 w-16 -rotate-90" viewBox="0 0 64 64">
-              <circle
-                cx="32"
-                cy="32"
-                r="28"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="4"
-                className="text-secondary"
-              />
-              <circle
-                cx="32"
-                cy="32"
-                r="28"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="4"
-                strokeDasharray={`${percentage * 1.76} 176`}
-                strokeLinecap="round"
-                className="text-primary transition-all duration-500"
-              />
-            </svg>
-            <span className="absolute text-xs font-bold text-foreground">{percentage}%</span>
-          </div>
-          <div>
-            <p className="text-sm font-medium text-foreground">
-              {completedCount} of {totalCount}
-            </p>
-            <p className="text-[11px] text-muted-foreground">tutorials completed</p>
-          </div>
-        </div>
-      </div>
-
       {/* Category filters */}
       <div className="rounded-lg border border-border bg-card p-5">
         <h3 className="mb-3 text-xs font-bold text-card-foreground uppercase tracking-wider">
