@@ -2,7 +2,17 @@
 import subprocess
 import os
 
-os.chdir('/vercel/share/v0-project')
+# Get the project root (parent of scripts directory)
+script_dir = os.getcwd()
+project_root = os.path.dirname(script_dir) if script_dir.endswith('scripts') else script_dir
+
+# Change to project root
+if os.path.exists(os.path.join(project_root, '.git')):
+    os.chdir(project_root)
+else:
+    # Try going up one more level
+    project_root = os.path.dirname(project_root)
+    os.chdir(project_root)
 
 # Add all changes
 subprocess.run(['git', 'add', '-A'], check=True)
