@@ -1,4 +1,7 @@
+"use client"
+
 import { Plus, RotateCcw, Download, Shield } from "lucide-react"
+import { toast } from "sonner"
 
 const actions = [
   {
@@ -42,6 +45,15 @@ export function QuickActions() {
           return (
             <button
               key={action.label}
+              onClick={() => {
+                if (action.variant === "primary") {
+                  toast.success("Ready to create new video entry")
+                } else if (action.variant === "destructive") {
+                  toast.info("Cache purge initiated...")
+                } else {
+                  toast.info(`${action.label} triggered`)
+                }
+              }}
               className={`flex items-center gap-3 rounded-md border px-4 py-3 text-sm font-medium transition-colors ${colorClasses[action.variant]}`}
             >
               <action.icon className="h-4 w-4 shrink-0" />

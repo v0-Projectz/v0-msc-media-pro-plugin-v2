@@ -51,13 +51,31 @@ const issues = [
 const quickFixSnippets = [
   {
     title: "How to add a Button Shadow?",
-    code: `.divi_button {
-  border-radius: 0;
-  background: none, headline !tailor [matte 'footere']
-  soort, post.woort card;*)
-  sort list M.
-  Svert fmoser falls Sort*}
-  annostst gore asten [noterrpt]
+    code: `.et_pb_button {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.et_pb_button:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}`,
+  },
+  {
+    title: "Force Video Container Aspect Ratio",
+    code: `.msc-video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+
+.msc-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }`,
   },
 ]
@@ -96,7 +114,7 @@ export function InstructionzTroubleshooting() {
           </p>
           <p className="text-sm text-card-foreground leading-relaxed">
             Log in to your{" "}
-            <a href="#" className="font-bold text-accent hover:underline">
+            <a href="https://bunny.net" target="_blank" rel="noopener noreferrer" className="font-bold text-accent hover:underline">
               {apiKeyGuide.location}
             </a>{" "}
             dashboard.

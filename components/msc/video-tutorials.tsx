@@ -126,7 +126,7 @@ export function VideoTutorials() {
 
         {/* Video grid */}
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredTutorials.map((video) => (
+          {filteredTutorials.map((video, index) => (
             <button
               key={video.id}
               onClick={() =>
@@ -143,6 +143,7 @@ export function VideoTutorials() {
                   src={video.thumbnail}
                   alt={video.title}
                   fill
+                  priority={index === 0}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 

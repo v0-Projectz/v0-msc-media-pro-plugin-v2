@@ -45,7 +45,7 @@ export function SidebarNav() {
           {!collapsed && (
             <div className="flex flex-col overflow-hidden">
               <span className="truncate text-sm font-bold text-foreground tracking-wide">
-                MSC Media Pro
+                MSC Media Pro v2
               </span>
               <span className="truncate text-[10px] font-mono text-muted-foreground">
                 CONTROL CENTER

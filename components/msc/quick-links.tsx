@@ -1,9 +1,9 @@
 import { ExternalLink, Mail, CreditCard, UserCircle } from "lucide-react"
 
 const links = [
-  { icon: Mail, label: "Access Webmail", href: "#" },
-  { icon: UserCircle, label: "Client Portal", href: "#" },
-  { icon: CreditCard, label: "Stripe Login", href: "#" },
+  { icon: Mail, label: "Access Webmail", href: "https://webmail.mystudiochannel.com", external: true },
+  { icon: UserCircle, label: "Client Portal", href: "https://mystudiochannel.com/portal", external: true },
+  { icon: CreditCard, label: "Stripe Login", href: "https://dashboard.stripe.com", external: true },
 ]
 
 export function QuickLinks() {
@@ -17,6 +17,8 @@ export function QuickLinks() {
           <a
             key={link.label}
             href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group flex items-center gap-3 rounded-md border border-border bg-secondary px-4 py-3 text-sm text-secondary-foreground transition-colors hover:border-primary/40 hover:bg-primary/5"
           >
             <link.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />

@@ -51,7 +51,7 @@ export default function DashboardPage() {
         {/* Footer */}
         <footer className="mt-12 border-t border-border pt-6 pb-8">
           <p className="text-center text-[10px] font-mono text-muted-foreground tracking-wider">
-            MSC MEDIA PRO &middot; CONTROL CENTER &middot; v1.0.1 &middot; Powered by MyStudioChannel
+            MSC MEDIA PRO v2 &middot; CONTROL CENTER &middot; Powered by MyStudioChannel
           </p>
         </footer>
       </main>
