@@ -7,7 +7,7 @@ const _inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const _spaceMono = Space_Mono({ weight: ['400', '700'], subsets: ['latin'], variable: '--font-space-mono' })
 
 export const metadata: Metadata = {
-  title: 'MSC Media Pro | Control Center',
+  title: 'MSC Media Pro v2 | Control Center',
   description: 'MSC Media Pro Studio Experience — your high-end WordPress Control Center',
   generator: 'v0.app',
   icons: {
