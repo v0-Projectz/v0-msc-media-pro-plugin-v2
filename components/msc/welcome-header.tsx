@@ -1,22 +1,21 @@
-"use client"
-
 import { Badge } from "@/components/ui/badge"
-import { User } from "lucide-react"
 
 export function WelcomeHeader() {
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/20">
-          <User className="h-6 w-6 text-primary" />
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold text-foreground">Welcome Back</h1>
-          <p className="text-sm text-muted-foreground">MSC Media Pro Studio Control Center</p>
-        </div>
+    <div className="flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
+          Studio Mode
+        </p>
+        <h1 className="text-3xl font-bold text-foreground tracking-tight lg:text-4xl">
+          MSC Media Pro
+        </h1>
+        <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+          Welcome to the Studio. Your site is healthy.
+        </p>
       </div>
-      <Badge variant="outline" className="border-primary/30 bg-primary/10 text-primary">
-        PRO
+      <Badge className="mt-2 w-fit border border-primary/30 bg-primary/10 text-primary md:mt-0">
+        SYSTEM ACTIVE
       </Badge>
     </div>
   )
