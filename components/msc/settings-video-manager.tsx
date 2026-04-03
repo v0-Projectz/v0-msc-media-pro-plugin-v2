@@ -1,0 +1,392 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { Video, Save, RotateCcw, ExternalLink, Play, Pencil, Check, X } from "lucide-react"
+import { toast } from "sonner"
+import Image from "next/image"
+
+interface VideoEntry {
+  id: string
+  title: string
+  description: string
+  category: string
+  youtubeId: string
+  thumbnail: string
+  duration: string
+}
+
+// Default videos from config
+const DEFAULT_VIDEOS: VideoEntry[] = [
+  {
+    id: "1",
+    title: "Adding a New Blog Post",
+    description: "Learn how to create and publish a new blog post in WordPress using the Divi builder.",
+    category: "content",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/adding-blog-post.jpg",
+    duration: "4:32",
+  },
+  {
+    id: "2",
+    title: "Uploading Images & Galleries",
+    description: "Master the WordPress media library and create stunning image galleries with Divi.",
+    category: "content",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/uploading-images.jpg",
+    duration: "6:15",
+  },
+  {
+    id: "3",
+    title: "Embedding YouTube Videos",
+    description: "Embed and manage YouTube videos on your pages using Presto Player integration.",
+    category: "content",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/embedding-youtube.jpg",
+    duration: "3:48",
+  },
+  {
+    id: "4",
+    title: "Updating Your SEO Meta",
+    description: "Optimize your page titles, descriptions, and Open Graph tags for search engines.",
+    category: "seo",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/seo-meta.jpg",
+    duration: "5:22",
+  },
+  {
+    id: "5",
+    title: "Changing Fonts in Divi",
+    description: "Customize typography across your site using Divi Theme Options and Google Fonts.",
+    category: "site-basics",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/changing-fonts.jpg",
+    duration: "3:10",
+  },
+  {
+    id: "6",
+    title: "Connecting Your Email Optin",
+    description: "Set up Mailchimp, ConvertKit, or ActiveCampaign email opt-in forms on your site.",
+    category: "site-basics",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/email-optin.jpg",
+    duration: "7:45",
+  },
+  {
+    id: "7",
+    title: "Setting Up Google Analytics",
+    description: "Install and configure Google Analytics 4 tracking on your WordPress site.",
+    category: "seo",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/google-analytics.jpg",
+    duration: "4:58",
+  },
+  {
+    id: "8",
+    title: "Creating a Backup Strategy",
+    description: "Configure automated backups with WPvivid and learn manual backup best practices.",
+    category: "support",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/backup-strategy.jpg",
+    duration: "8:12",
+  },
+  {
+    id: "9",
+    title: "Troubleshooting Video Issues",
+    description: "Fix common video playback problems including Bunny.net and Presto Player errors.",
+    category: "support",
+    youtubeId: "dQw4w9WgXcQ",
+    thumbnail: "/thumbnails/troubleshooting-video.jpg",
+    duration: "5:30",
+  },
+]
+
+const STORAGE_KEY = "msc-video-config"
+
+export function SettingsVideoManager() {
+  const [videos, setVideos] = useState<VideoEntry[]>(DEFAULT_VIDEOS)
+  const [editingId, setEditingId] = useState<string | null>(null)
+  const [editValues, setEditValues] = useState<Partial<VideoEntry>>({})
+  const [hasChanges, setHasChanges] = useState(false)
+
+  // Load saved videos from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        setVideos(parsed)
+      } catch (e) {
+        console.error("Failed to load saved video config")
+      }
+    }
+  }, [])
+
+  const startEditing = (video: VideoEntry) => {
+    setEditingId(video.id)
+    setEditValues({
+      title: video.title,
+      description: video.description,
+      youtubeId: video.youtubeId,
+      duration: video.duration,
+    })
+  }
+
+  const cancelEditing = () => {
+    setEditingId(null)
+    setEditValues({})
+  }
+
+  const saveEditing = (id: string) => {
+    setVideos(prev => prev.map(v => 
+      v.id === id 
+        ? { ...v, ...editValues }
+        : v
+    ))
+    setEditingId(null)
+    setEditValues({})
+    setHasChanges(true)
+    toast.success("Video updated")
+  }
+
+  const handleSaveAll = () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(videos))
+    // Dispatch custom event so other components can update
+    window.dispatchEvent(new CustomEvent("msc-videos-updated"))
+    setHasChanges(false)
+    toast.success("All video settings saved!")
+  }
+
+  const handleReset = () => {
+    setVideos(DEFAULT_VIDEOS)
+    localStorage.removeItem(STORAGE_KEY)
+    // Dispatch custom event so other components can update
+    window.dispatchEvent(new CustomEvent("msc-videos-updated"))
+    setHasChanges(false)
+    toast.info("Reset to default videos")
+  }
+
+  const getYouTubeThumbnail = (youtubeId: string) => {
+    return `https://img.youtube.com/vi/${youtubeId}/mqdefault.jpg`
+  }
+
+  const categoryLabels: Record<string, string> = {
+    "content": "Content Updates",
+    "seo": "SEO",
+    "site-basics": "Site Basics",
+    "support": "Support",
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-lg font-semibold text-foreground">Video Manager</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Manage YouTube video links for your tutorial library
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleReset}
+            className="flex items-center gap-2 rounded-md border border-border bg-secondary px-3 py-2 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Reset
+          </button>
+          <button
+            onClick={handleSaveAll}
+            disabled={!hasChanges}
+            className="flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <Save className="h-4 w-4" />
+            Save All
+          </button>
+        </div>
+      </div>
+
+      {/* Info box */}
+      <div className="rounded-lg border border-primary/20 bg-primary/5 p-4">
+        <div className="flex gap-3">
+          <Video className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+          <div className="text-sm text-muted-foreground">
+            <p className="font-medium text-foreground mb-1">How to get a YouTube Video ID</p>
+            <p>
+              The YouTube ID is the code after <code className="bg-secondary px-1 py-0.5 rounded text-xs">v=</code> in the URL. 
+              For example, in <code className="bg-secondary px-1 py-0.5 rounded text-xs">youtube.com/watch?v=dQw4w9WgXcQ</code>, 
+              the ID is <code className="bg-secondary px-1 py-0.5 rounded text-xs text-primary">dQw4w9WgXcQ</code>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Video list */}
+      <div className="space-y-3">
+        {videos.map((video) => (
+          <div
+            key={video.id}
+            className="rounded-lg border border-border bg-card p-4 transition-colors hover:border-border/80"
+          >
+            {editingId === video.id ? (
+              // Edit mode
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    Editing Video #{video.id}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={cancelEditing}
+                      className="flex items-center gap-1 rounded-md border border-border bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground hover:bg-secondary/80"
+                    >
+                      <X className="h-3 w-3" />
+                      Cancel
+                    </button>
+                    <button
+                      onClick={() => saveEditing(video.id)}
+                      className="flex items-center gap-1 rounded-md bg-primary px-2 py-1 text-xs font-medium text-primary-foreground hover:bg-primary/90"
+                    >
+                      <Check className="h-3 w-3" />
+                      Save
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                      Video Title
+                    </label>
+                    <input
+                      type="text"
+                      value={editValues.title || ""}
+                      onChange={(e) => setEditValues(prev => ({ ...prev, title: e.target.value }))}
+                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                      YouTube Video ID
+                    </label>
+                    <input
+                      type="text"
+                      value={editValues.youtubeId || ""}
+                      onChange={(e) => setEditValues(prev => ({ ...prev, youtubeId: e.target.value }))}
+                      placeholder="e.g. dQw4w9WgXcQ"
+                      className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary font-mono"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                    Description
+                  </label>
+                  <textarea
+                    value={editValues.description || ""}
+                    onChange={(e) => setEditValues(prev => ({ ...prev, description: e.target.value }))}
+                    rows={2}
+                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
+                  />
+                </div>
+
+                <div className="w-32">
+                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">
+                    Duration
+                  </label>
+                  <input
+                    type="text"
+                    value={editValues.duration || ""}
+                    onChange={(e) => setEditValues(prev => ({ ...prev, duration: e.target.value }))}
+                    placeholder="e.g. 4:32"
+                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  />
+                </div>
+
+                {/* Preview */}
+                {editValues.youtubeId && (
+                  <div className="mt-2">
+                    <span className="block text-xs font-medium text-muted-foreground mb-1.5">
+                      Thumbnail Preview
+                    </span>
+                    <div className="relative aspect-video w-48 overflow-hidden rounded-md bg-muted">
+                      <Image
+                        src={getYouTubeThumbnail(editValues.youtubeId)}
+                        alt="YouTube thumbnail preview"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              // View mode
+              <div className="flex items-start gap-4">
+                {/* Thumbnail */}
+                <div className="relative aspect-video w-32 shrink-0 overflow-hidden rounded-md bg-muted">
+                  <Image
+                    src={video.thumbnail}
+                    alt={video.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                    <Play className="h-6 w-6 text-white" />
+                  </div>
+                </div>
+
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <h3 className="font-medium text-foreground truncate">
+                        {video.title}
+                      </h3>
+                      <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">
+                        {video.description}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => startEditing(video)}
+                      className="shrink-0 flex items-center gap-1 rounded-md border border-border bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground hover:bg-secondary/80 hover:border-primary/30"
+                    >
+                      <Pencil className="h-3 w-3" />
+                      Edit
+                    </button>
+                  </div>
+
+                  <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
+                    <span className="rounded bg-secondary px-1.5 py-0.5">
+                      {categoryLabels[video.category] || video.category}
+                    </span>
+                    <span>{video.duration}</span>
+                    <span className="font-mono text-primary">
+                      ID: {video.youtubeId}
+                    </span>
+                    <a
+                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 hover:text-primary transition-colors"
+                    >
+                      <ExternalLink className="h-3 w-3" />
+                      Preview
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Add new video section */}
+      <div className="border-t border-border pt-6">
+        <p className="text-sm text-muted-foreground text-center">
+          Need to add more videos? Contact your developer to expand the video library.
+        </p>
+      </div>
+    </div>
+  )
+}

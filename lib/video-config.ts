@@ -143,16 +143,46 @@ export const ALL_VIDEOS: VideoConfig[] = [
 ]
 
 /**
+ * Storage key for localStorage
+ */
+export const VIDEO_STORAGE_KEY = "msc-video-config"
+
+/**
+ * Get videos from localStorage or fall back to defaults
+ * This allows the Video Manager to persist changes
+ */
+export function getStoredVideos(): VideoConfig[] {
+  if (typeof window === "undefined") return ALL_VIDEOS
+  
+  try {
+    const stored = localStorage.getItem(VIDEO_STORAGE_KEY)
+    if (stored) {
+      const parsed = JSON.parse(stored)
+      // Merge stored data with defaults to ensure all fields exist
+      return ALL_VIDEOS.map(defaultVideo => {
+        const storedVideo = parsed.find((v: VideoConfig) => v.id === defaultVideo.id)
+        return storedVideo ? { ...defaultVideo, ...storedVideo } : defaultVideo
+      })
+    }
+  } catch (e) {
+    console.error("Failed to load video config from storage")
+  }
+  return ALL_VIDEOS
+}
+
+/**
  * Helper function to get videos by category
  */
 export function getVideosByCategory(category: string): VideoConfig[] {
-  if (category === "all") return ALL_VIDEOS
-  return ALL_VIDEOS.filter((v) => v.category === category)
+  const videos = getStoredVideos()
+  if (category === "all") return videos
+  return videos.filter((v) => v.category === category)
 }
 
 /**
  * Helper function to get a single video by ID
  */
 export function getVideoById(id: string): VideoConfig | undefined {
-  return ALL_VIDEOS.find((v) => v.id === id)
+  const videos = getStoredVideos()
+  return videos.find((v) => v.id === id)
 }

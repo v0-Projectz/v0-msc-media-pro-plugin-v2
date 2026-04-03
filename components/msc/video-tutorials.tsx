@@ -6,13 +6,15 @@ import Link from "next/link"
 import { Play, CheckCircle2, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { VideoLightbox } from "./video-lightbox"
-import { ALL_VIDEOS, VIDEO_CATEGORIES } from "@/lib/video-config"
+import { VIDEO_CATEGORIES } from "@/lib/video-config"
+import { useVideos } from "@/hooks/use-videos"
 
-// Use centralized video config - edit lib/video-config.ts to change YouTube IDs
+// Use centralized video config - editable via Settings > Video Manager
 const categories = VIDEO_CATEGORIES
-const tutorials = ALL_VIDEOS.slice(0, 6) // Show first 6 on dashboard
 
 export function VideoTutorials() {
+  const allVideos = useVideos()
+  const tutorials = allVideos.slice(0, 6) // Show first 6 on dashboard
   const [activeCategory, setActiveCategory] = useState("all")
   const [lightboxVideo, setLightboxVideo] = useState<{
     youtubeId: string

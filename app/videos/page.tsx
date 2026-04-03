@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { SidebarNav } from "@/components/msc/sidebar-nav"
@@ -8,12 +8,12 @@ import { VideoCard } from "@/components/msc/video-card"
 import { VideoLightbox } from "@/components/msc/video-lightbox"
 import { VideosToolbar } from "@/components/msc/videos-toolbar"
 import { VideosSidebar } from "@/components/msc/videos-sidebar"
-import { ALL_VIDEOS, VIDEO_CATEGORIES, type VideoConfig } from "@/lib/video-config"
+import { VIDEO_CATEGORIES } from "@/lib/video-config"
+import { useVideos } from "@/hooks/use-videos"
 import type { VideoData } from "@/components/msc/video-card"
 
-// Use centralized video config - edit lib/video-config.ts to change YouTube IDs
+// Use centralized video config - editable via Settings > Video Manager
 const categories = VIDEO_CATEGORIES
-const allVideos: VideoData[] = ALL_VIDEOS
 
 function parseDuration(d: string): number {
   const parts = d.split(":").map(Number)
@@ -21,12 +21,18 @@ function parseDuration(d: string): number {
 }
 
 export default function VideosPage() {
+  const storedVideos = useVideos()
   const [activeCategory, setActiveCategory] = useState("all")
   const [search, setSearch] = useState("")
   const [view, setView] = useState<"grid" | "list">("grid")
   const [sortBy, setSortBy] = useState("newest")
   const [lightboxVideo, setLightboxVideo] = useState<VideoData | null>(null)
-  const [videos, setVideos] = useState(allVideos)
+  const [videos, setVideos] = useState<VideoData[]>(storedVideos)
+
+  // Sync with stored videos when they change (e.g. from Video Manager)
+  useEffect(() => {
+    setVideos(storedVideos)
+  }, [storedVideos])
 
   const filteredVideos = useMemo(() => {
     let result = activeCategory === "all" ? videos : videos.filter((v) => v.category === activeCategory)

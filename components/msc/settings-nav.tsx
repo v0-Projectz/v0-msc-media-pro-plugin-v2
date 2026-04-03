@@ -1,6 +1,6 @@
 "use client"
 
-import { Paintbrush, Eye, Palette, Link2, Shield, Wrench } from "lucide-react"
+import { Paintbrush, Eye, Palette, Link2, Shield, Wrench, Video } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 
@@ -11,6 +11,7 @@ const sections = [
   { id: "quick-links", label: "Quick Links", icon: Link2 },
   { id: "access", label: "Access Control", icon: Shield },
   { id: "custom-toolz", label: "Custom Toolz", icon: Wrench },
+  { id: "video-manager", label: "Video Manager", icon: Video },
 ]
 
 interface SettingsNavProps {

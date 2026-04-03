@@ -11,6 +11,7 @@ import { SettingsColors } from "@/components/msc/settings-colors"
 import { SettingsQuickLinks } from "@/components/msc/settings-quick-links"
 import { SettingsAccess } from "@/components/msc/settings-access"
 import { SettingsCustomToolz } from "@/components/msc/settings-custom-toolz"
+import { SettingsVideoManager } from "@/components/msc/settings-video-manager"
 
 const sectionComponents: Record<string, React.FC> = {
   branding: SettingsBranding,
@@ -19,6 +20,7 @@ const sectionComponents: Record<string, React.FC> = {
   "quick-links": SettingsQuickLinks,
   access: SettingsAccess,
   "custom-toolz": SettingsCustomToolz,
+  "video-manager": SettingsVideoManager,
 }
 
 export default function SettingsPage() {
