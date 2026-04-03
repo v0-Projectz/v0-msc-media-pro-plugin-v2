@@ -8,6 +8,8 @@ interface VideosToolbarProps {
   onSearchChange: (val: string) => void
   view: "grid" | "list"
   onViewChange: (val: "grid" | "list") => void
+  sortBy: string
+  onSortChange: (val: string) => void
   totalVideos: number
 }
 
@@ -16,6 +18,8 @@ export function VideosToolbar({
   onSearchChange,
   view,
   onViewChange,
+  sortBy,
+  onSortChange,
   totalVideos,
 }: VideosToolbarProps) {
   return (
@@ -32,7 +36,20 @@ export function VideosToolbar({
         />
       </div>
 
-      {/* View toggle */}
+      <div className="flex items-center gap-3">
+        {/* Sort dropdown */}
+        <select
+          value={sortBy}
+          onChange={(e) => onSortChange(e.target.value)}
+          className="appearance-none rounded-md border border-border bg-secondary px-3 py-2 pr-7 text-xs text-foreground focus:border-primary/50 focus:outline-none"
+        >
+          <option value="newest">Newest</option>
+          <option value="title">A-Z</option>
+          <option value="duration">Duration</option>
+          <option value="incomplete">Incomplete First</option>
+        </select>
+
+        {/* View toggle */}
       <div className="flex overflow-hidden rounded-md border border-border">
         <button
           onClick={() => onViewChange("grid")}
