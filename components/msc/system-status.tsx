@@ -10,7 +10,7 @@ function StatusBadge({ status }: { status: "online" | "offline" | "active" }) {
   return (
     <Badge
       variant="outline"
-      className={`text-[10px] font-mono uppercase ${styles[status]}`}
+      className={`text-[10px] font-sans uppercase ${styles[status]}`}
     >
       {status}
     </Badge>
