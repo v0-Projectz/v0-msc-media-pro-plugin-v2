@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Play, CheckCircle2, ArrowRight } from "lucide-react"
+import { Play, CheckCircle2, ArrowRight, Search, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { VideoLightbox } from "./video-lightbox"
 import { VIDEO_CATEGORIES } from "@/lib/video-config"
@@ -15,16 +15,20 @@ const categories = VIDEO_CATEGORIES
 export function VideoTutorials() {
   const allVideos = useVideos()
   const tutorials = allVideos.slice(0, 6) // Show first 6 on dashboard
-  const [activeCategory, setActiveCategory] = useState("all")
+  const [activeCategory, setActiveCategory] = useState("site-basics") // Default to Site Basics
+  const [searchQuery, setSearchQuery] = useState("")
   const [lightboxVideo, setLightboxVideo] = useState<{
     youtubeId: string
     title: string
   } | null>(null)
 
-  const filteredTutorials =
-    activeCategory === "all"
-      ? tutorials
-      : tutorials.filter((t) => t.category === activeCategory)
+  const filteredTutorials = tutorials
+    .filter(t => activeCategory === "all" || t.category === activeCategory)
+    .filter(t => 
+      searchQuery === "" ||
+      t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      t.description.toLowerCase().includes(searchQuery.toLowerCase())
+    )
 
   return (
     <>
@@ -32,7 +36,7 @@ export function VideoTutorials() {
         {/* Section header */}
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="text-lg font-bold text-card-foreground">
-            Instructionz
+            Video Tutorials
           </h2>
           <div className="flex items-center gap-3">
             <p className="text-xs text-muted-foreground font-mono">
@@ -46,6 +50,26 @@ export function VideoTutorials() {
               <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
+        </div>
+
+        {/* Search bar */}
+        <div className="mb-4 relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+          <input
+            type="text"
+            placeholder="Search tutorials..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-9 pr-9 py-2 text-sm rounded-md border border-border bg-secondary text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
         </div>
 
         {/* Category filter tabs */}
