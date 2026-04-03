@@ -6,71 +6,11 @@ import Link from "next/link"
 import { Play, CheckCircle2, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { VideoLightbox } from "./video-lightbox"
+import { ALL_VIDEOS, VIDEO_CATEGORIES } from "@/lib/video-config"
 
-const categories = [
-  { id: "all", label: "All" },
-  { id: "site-basics", label: "Site Basics" },
-  { id: "seo", label: "SEO" },
-  { id: "content", label: "Content Updates" },
-  { id: "support", label: "Support" },
-]
-
-const tutorials = [
-  {
-    id: "1",
-    title: "Adding a New Blog Post",
-    category: "content",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "/thumbnails/adding-blog-post.jpg",
-    duration: "4:32",
-    completed: true,
-  },
-  {
-    id: "2",
-    title: "Uploading Images & Galleries",
-    category: "content",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "/thumbnails/uploading-images.jpg",
-    duration: "6:15",
-    completed: true,
-  },
-  {
-    id: "3",
-    title: "Embedding YouTube Videos",
-    category: "content",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "/thumbnails/embedding-youtube.jpg",
-    duration: "3:48",
-    completed: false,
-  },
-  {
-    id: "4",
-    title: "Updating Your SEO Meta",
-    category: "seo",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "/thumbnails/seo-meta.jpg",
-    duration: "5:22",
-    completed: false,
-  },
-  {
-    id: "5",
-    title: "Changing Fonts in Divi",
-    category: "site-basics",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "/thumbnails/changing-fonts.jpg",
-    duration: "3:10",
-    completed: false,
-  },
-  {
-    id: "6",
-    title: "Connecting Your Email Optin",
-    category: "site-basics",
-    youtubeId: "dQw4w9WgXcQ",
-    thumbnail: "/thumbnails/email-optin.jpg",
-    duration: "7:45",
-    completed: true,
-  },
-]
+// Use centralized video config - edit lib/video-config.ts to change YouTube IDs
+const categories = VIDEO_CATEGORIES
+const tutorials = ALL_VIDEOS.slice(0, 6) // Show first 6 on dashboard
 
 export function VideoTutorials() {
   const [activeCategory, setActiveCategory] = useState("all")
