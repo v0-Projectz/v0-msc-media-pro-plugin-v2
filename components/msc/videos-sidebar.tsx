@@ -1,6 +1,7 @@
 "use client"
 
-import { CheckCircle2, Circle, Video } from "lucide-react"
+import { CheckCircle2, Circle, Video, Settings } from "lucide-react"
+import Link from "next/link"
 import { cn } from "@/lib/utils"
 import type { VideoData } from "./video-card"
 
@@ -95,36 +96,21 @@ export function VideosSidebar({
         </div>
       </div>
 
-      {/* Recent / Up Next */}
+      {/* Video Manager */}
       <div className="rounded-lg border border-border bg-card p-5">
         <h3 className="mb-3 text-xs font-bold text-card-foreground uppercase tracking-wider">
-          Up Next
+          Manage Videos
         </h3>
-        <div className="flex flex-col gap-2">
-          {videos
-            .filter((v) => !v.completed)
-            .slice(0, 4)
-            .map((video) => (
-              <div
-                key={video.id}
-                className={cn(
-                  "flex items-center gap-2 rounded-md px-2.5 py-2 text-xs transition-colors",
-                  activeVideoId === video.id
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground"
-                )}
-              >
-                <Circle className="h-3 w-3 shrink-0" />
-                <span className="truncate">{video.title}</span>
-              </div>
-            ))}
-          {videos.filter((v) => !v.completed).length === 0 && (
-            <div className="flex items-center gap-2 text-xs text-primary">
-              <CheckCircle2 className="h-3.5 w-3.5" />
-              <span>All tutorials completed!</span>
-            </div>
-          )}
-        </div>
+        <p className="text-xs text-muted-foreground mb-4">
+          Add, edit, or remove videos from your library. Update YouTube links and custom thumbnails.
+        </p>
+        <Link
+          href="/settings?section=video-manager"
+          className="flex items-center justify-center gap-2 w-full rounded-md border border-primary/30 bg-primary/10 px-4 py-2.5 text-xs font-medium text-primary transition-colors hover:bg-primary/20"
+        >
+          <Settings className="h-3.5 w-3.5" />
+          Open Video Manager
+        </Link>
       </div>
 
       {/* Stats */}
