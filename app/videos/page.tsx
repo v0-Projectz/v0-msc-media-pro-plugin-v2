@@ -43,20 +43,6 @@ export default function VideosPage() {
       )
     }
 
-    switch (sortBy) {
-      case "title":
-        result = [...result].sort((a, b) => a.title.localeCompare(b.title))
-        break
-      case "duration":
-        result = [...result].sort((a, b) => parseDuration(a.duration) - parseDuration(b.duration))
-        break
-      case "incomplete":
-        result = [...result].sort((a, b) => Number(a.completed) - Number(b.completed))
-        break
-      default:
-        break
-    }
-
     return result
   }, [videos, activeCategory, search])
 
