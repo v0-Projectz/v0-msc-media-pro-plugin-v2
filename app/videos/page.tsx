@@ -79,7 +79,7 @@ export default function VideosPage() {
 
         {/* Page header */}
         <div className="mb-6">
-          <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
+          <p className="text-xs font-sans text-muted-foreground tracking-widest uppercase">
             Tutorial Library
           </p>
           <h1 className="mt-1 text-3xl font-bold text-foreground tracking-tight">
@@ -125,7 +125,7 @@ export default function VideosPage() {
                     }
                   >
                     {cat.label}
-                    <span className="ml-1.5 text-[10px] font-mono opacity-60">{count}</span>
+                    <span className="ml-1.5 text-[10px] font-sans opacity-60">{count}</span>
                   </button>
                 )
               })}
@@ -178,7 +178,7 @@ export default function VideosPage() {
 
         {/* Footer */}
         <footer className="mt-12 border-t border-border pt-6 pb-8">
-          <p className="text-center text-[10px] font-mono text-muted-foreground tracking-wider">
+            <p className="text-center text-[10px] font-sans text-muted-foreground tracking-wider">
             MSC MEDIA PRO v2 &middot; VIDEO LIBRARY &middot; Powered by MyStudioChannel
           </p>
         </footer>

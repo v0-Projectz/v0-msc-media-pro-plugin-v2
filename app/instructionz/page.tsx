@@ -32,9 +32,9 @@ export default function InstructionzPage() {
 
         {/* Page header */}
         <div className="mb-8">
-          <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
-            MSC Engine
-          </p>
+        <p className="text-xs font-sans text-muted-foreground tracking-widest uppercase">
+          MSC Engine
+        </p>
           <h1 className="mt-1 text-3xl font-bold text-foreground tracking-tight">
             Engine Instructionz
           </h1>
@@ -61,7 +61,7 @@ export default function InstructionzPage() {
 
         {/* Footer */}
         <footer className="mt-12 border-t border-border pt-6 pb-8">
-          <p className="text-center text-[10px] font-mono text-muted-foreground tracking-wider">
+          <p className="text-center text-[10px] font-sans text-muted-foreground tracking-wider">
             MSC MEDIA PRO v2 &middot; ENGINE INSTRUCTIONZ &middot; Powered by MyStudioChannel
           </p>
         </footer>

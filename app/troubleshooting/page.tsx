@@ -14,9 +14,9 @@ export default function TroubleshootingPage() {
 
         {/* Page header */}
         <div className="mb-8">
-          <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
-            Support Center
-          </p>
+        <p className="text-xs font-sans text-muted-foreground tracking-widest uppercase">
+          Support Center
+        </p>
           <h1 className="mt-1 text-3xl font-bold text-foreground tracking-tight">
             Troubleshooting & Support
           </h1>
@@ -32,7 +32,7 @@ export default function TroubleshootingPage() {
 
         {/* Footer */}
         <footer className="mt-12 border-t border-border pt-6 pb-8">
-          <p className="text-center text-[10px] font-mono text-muted-foreground tracking-wider">
+          <p className="text-center text-[10px] font-sans text-muted-foreground tracking-wider">
             MSC MEDIA PRO v2 &middot; TROUBLESHOOTING &middot; Powered by MyStudioChannel
           </p>
         </footer>

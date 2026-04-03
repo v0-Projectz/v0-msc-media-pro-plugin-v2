@@ -48,9 +48,9 @@ export default function SettingsPage() {
 
         {/* Page header */}
         <div className="mb-8">
-          <p className="text-xs font-mono text-muted-foreground tracking-widest uppercase">
-            Whitelabel Configuration
-          </p>
+        <p className="text-xs font-sans text-muted-foreground tracking-widest uppercase">
+          Whitelabel Configuration
+        </p>
           <h1 className="mt-1 text-3xl font-bold text-foreground tracking-tight">
             Settings
           </h1>
@@ -77,7 +77,7 @@ export default function SettingsPage() {
 
         {/* Footer */}
         <footer className="mt-12 border-t border-border pt-6 pb-8">
-          <p className="text-center text-[10px] font-mono text-muted-foreground tracking-wider">
+          <p className="text-center text-[10px] font-sans text-muted-foreground tracking-wider">
             MSC MEDIA PRO v2 &middot; SETTINGS &middot; Powered by MyStudioChannel
           </p>
         </footer>
