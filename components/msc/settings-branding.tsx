@@ -73,7 +73,7 @@ export function SettingsBranding() {
             <button className="rounded-md border border-primary/30 bg-primary/10 px-4 py-2 text-xs font-medium text-primary transition-colors hover:bg-primary/20">
               Upload Logo
             </button>
-            <span className="text-[10px] text-muted-foreground font-mono">PNG, SVG, or ICO &middot; Max 512 KB</span>
+            <span className="text-[10px] text-muted-foreground font-sans">PNG, SVG, or ICO &middot; Max 512 KB</span>
           </div>
         </div>
       </div>
@@ -196,12 +196,12 @@ export function SettingsBranding() {
             </div>
             <div>
               <p className="text-sm font-bold text-foreground">{settings.pluginName}</p>
-              <p className="text-[10px] font-mono text-muted-foreground">{settings.tagline}</p>
+              <p className="text-[10px] font-sans text-muted-foreground">{settings.tagline}</p>
             </div>
           </div>
           <p className="mt-3 text-sm text-muted-foreground">{settings.welcomeMessage}</p>
           <div className="mt-3 border-t border-border pt-3">
-            <p className="text-[10px] font-mono text-muted-foreground">
+            <p className="text-[10px] font-sans text-muted-foreground">
               {settings.footerCredit} | Powered by{" "}
               <span className="text-accent">{settings.footerPoweredBy}</span>
             </p>
@@ -225,7 +225,7 @@ export function SettingsBranding() {
           Reset Defaults
         </button>
         {saved && (
-          <span className="text-xs font-mono text-primary animate-in fade-in">
+          <span className="text-xs font-sans text-primary animate-in fade-in">
             Changes saved successfully.
           </span>
         )}
