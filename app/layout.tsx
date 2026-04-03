@@ -39,8 +39,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${_inter.variable} ${_spaceMono.variable}`}>
-      <body className="font-sans antialiased bg-background text-foreground">
+    <html lang="en" className={`${_inter.variable} ${_spaceMono.variable}`} suppressHydrationWarning>
+      <body className="font-sans antialiased bg-background text-foreground" suppressHydrationWarning>
         {children}
         <Analytics />
       </body>
