@@ -1,6 +1,6 @@
 "use client"
 
-import { CheckCircle2, Circle, Video, Settings } from "lucide-react"
+import { CheckCircle2, Circle, Settings } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import type { VideoData } from "./video-card"
@@ -111,31 +111,6 @@ export function VideosSidebar({
           <Settings className="h-3.5 w-3.5" />
           Open Video Manager
         </Link>
-      </div>
-
-      {/* Stats */}
-      <div className="rounded-lg border border-border bg-card p-5">
-        <h3 className="mb-3 text-xs font-bold text-card-foreground uppercase tracking-wider">
-          Library Stats
-        </h3>
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-md border border-border bg-secondary p-3 text-center">
-            <p className="text-lg font-bold text-foreground">{totalCount}</p>
-            <p className="text-[10px] font-mono text-muted-foreground">Total Videos</p>
-          </div>
-          <div className="rounded-md border border-border bg-secondary p-3 text-center">
-            <p className="text-lg font-bold text-primary">{completedCount}</p>
-            <p className="text-[10px] font-mono text-muted-foreground">Watched</p>
-          </div>
-          <div className="rounded-md border border-border bg-secondary p-3 text-center">
-            <p className="text-lg font-bold text-accent">{totalCount - completedCount}</p>
-            <p className="text-[10px] font-mono text-muted-foreground">Remaining</p>
-          </div>
-          <div className="rounded-md border border-border bg-secondary p-3 text-center">
-            <Video className="mx-auto h-5 w-5 text-muted-foreground" />
-            <p className="mt-1 text-[10px] font-mono text-muted-foreground">YouTube</p>
-          </div>
-        </div>
       </div>
     </div>
   )
