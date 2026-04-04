@@ -252,9 +252,9 @@ export function SettingsVideoManager() {
           <div className="text-sm text-muted-foreground">
             <p className="font-medium text-foreground mb-1">How to get a YouTube Video ID</p>
             <p>
-              The YouTube ID is the code after <code className="bg-secondary px-1 py-0.5 rounded text-xs">v=</code> in the URL. 
-              For example, in <code className="bg-secondary px-1 py-0.5 rounded text-xs">youtube.com/watch?v=dQw4w9WgXcQ</code>, 
-              the ID is <code className="bg-secondary px-1 py-0.5 rounded text-xs text-primary">dQw4w9WgXcQ</code>
+              The YouTube ID is the code after <code className="bg-secondary px-1 py-0.5 rounded text-xs font-sans">v=</code> in the URL. 
+              For example, in <code className="bg-secondary px-1 py-0.5 rounded text-xs font-sans">youtube.com/watch?v=dQw4w9WgXcQ</code>, 
+              the ID is <code className="bg-secondary px-1 py-0.5 rounded text-xs text-primary font-sans">dQw4w9WgXcQ</code>
             </p>
           </div>
         </div>
