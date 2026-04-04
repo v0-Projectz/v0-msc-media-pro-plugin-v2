@@ -131,7 +131,6 @@ export function SettingsVideoManager() {
       title: video.title,
       description: video.description,
       youtubeId: video.youtubeId,
-      duration: video.duration,
       customThumbnail: video.customThumbnail || "",
       useCustomThumbnail: video.useCustomThumbnail || false,
     })
@@ -327,19 +326,6 @@ export function SettingsVideoManager() {
                     onChange={(e) => setEditValues(prev => ({ ...prev, description: e.target.value }))}
                     rows={2}
                     className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
-                  />
-                </div>
-
-                <div className="w-32">
-                  <label className="block text-xs font-medium text-muted-foreground mb-1.5">
-                    Duration
-                  </label>
-                  <input
-                    type="text"
-                    value={editValues.duration || ""}
-                    onChange={(e) => setEditValues(prev => ({ ...prev, duration: e.target.value }))}
-                    placeholder="e.g. 4:32"
-                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                   />
                 </div>
 
